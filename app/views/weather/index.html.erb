@@ -1,0 +1,25 @@
+<h1>Weather</h1>
+<h3>City: <%= @city.titleize %>, <%= @state.upcase %></h3>
+	
+<%=  @five_day  %>
+
+<h1>5 Day Forecast</h1>
+<% @forecasts.each do |forecast| %>
+	<h4><%= forecast["day"] %></h4>
+	<h4>High: <%= forecast["high"] %></h4>
+	<h4>Low: <%= forecast["low"] %></h4>
+	<h4>Description: <%= forecast["text"] %></h4>
+<% end %>
+
+<h4>Want another city? Please enter both fields below:</h4>
+
+<%= form_tag "/index
+", method: :get do %>
+	<%= label_tag "City" %>
+	<%= text_field_tag :city %>
+	
+	<%= label_tag "state" %>
+	<%= text_field_tag :state %>
+	<%= submit_tag %>
+	<% end %>
+
